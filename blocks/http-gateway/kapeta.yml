@@ -1,0 +1,16 @@
+kind: kapeta/block-type-gateway-http:2.0.1
+metadata:
+  name: kapeta/sample-java-chat-http-gateway
+  title: HTTP Gateway
+spec:
+  entities: {}
+  providers: []
+  consumers:
+    - kind: kapeta/resource-type-web-fragment:0.0.8
+      metadata:
+        name: chat
+      spec:
+        port:
+          name: http
+          type: web
+        path: /

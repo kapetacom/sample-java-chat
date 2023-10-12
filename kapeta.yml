@@ -1,0 +1,87 @@
+kind: core/plan
+metadata:
+  name: kapeta/sample-java-chat-plan
+  title: Sample Java Chat
+spec:
+  blocks:
+    - block:
+        ref: kapeta://kapeta/sample-java-chat-messages-service:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 220
+        top: 85.8
+      id: 18f559f7-5dd9-40c1-a160-14bf9606141e
+      name: Messages Service
+    - block:
+        ref: kapeta://kapeta/sample-java-chat-chat-app:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 536
+        top: 279
+      id: 90b895b2-5139-47c3-b662-4f31af3f09df
+      name: Chat App
+    - block:
+        ref: kapeta://kapeta/sample-java-chat-http-gateway:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 233
+        top: 562
+      id: a8f7df35-086f-4a71-aa41-6a357c73fd33
+      name: HTTP Gateway
+  connections:
+    - provider:
+        resourceName: restapi
+        blockId: 18f559f7-5dd9-40c1-a160-14bf9606141e
+      consumer:
+        resourceName: restapi
+        blockId: 90b895b2-5139-47c3-b662-4f31af3f09df
+      port:
+        name: rest
+        type: rest
+      mapping:
+        getMessages:
+          targetId: getMessages
+          type: EXACT
+        addMessage:
+          targetId: addMessage
+          type: EXACT
+        deleteMessage:
+          targetId: deleteMessage
+          type: EXACT
+        deleteAllMessages:
+          targetId: deleteAllMessages
+          type: EXACT
+    - provider:
+        resourceName: chat
+        blockId: 90b895b2-5139-47c3-b662-4f31af3f09df
+      consumer:
+        resourceName: chat
+        blockId: a8f7df35-086f-4a71-aa41-6a357c73fd33
+      port:
+        name: http
+        type: web
+    - provider:
+        resourceName: messages
+        blockId: 18f559f7-5dd9-40c1-a160-14bf9606141e
+      consumer:
+        resourceName: messages
+        blockId: 90b895b2-5139-47c3-b662-4f31af3f09df
+      port:
+        name: rest
+        type: rest
+      mapping:
+        getMessages:
+          targetId: getMessages
+          type: EXACT
+        addMessage:
+          targetId: addMessage
+          type: EXACT
+        deleteMessage:
+          targetId: deleteMessage
+          type: EXACT
+        deleteAllMessages:
+          targetId: deleteAllMessages
+          type: EXACT
