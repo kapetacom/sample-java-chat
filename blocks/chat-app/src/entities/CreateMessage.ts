@@ -4,4 +4,5 @@
 
 export interface CreateMessage {
     text: string;
+    authorId: string;
 }

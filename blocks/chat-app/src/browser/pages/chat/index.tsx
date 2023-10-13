@@ -1,9 +1,22 @@
-import { createRoot } from "react-dom/client";
-import React from "react";
-import { ChatPage } from "./ChatPage";
+import React from 'react';
+import { ThemeProvider, createTheme } from '@mui/material';
+import { createRoot } from 'react-dom/client';
+import { ChatPage } from './ChatPage';
 
-const container = document.createElement("div");
-container.classList.add("application-container");
+import './index.less';
+
+const container = document.createElement('div');
+container.classList.add('application-container');
 document.body.append(container);
 
-createRoot(container).render(<ChatPage />);
+const theme = createTheme({
+    typography: {
+        fontFamily: ["'Montserrat'", 'Verdana', 'serif'].join(','),
+    },
+});
+
+createRoot(container).render(
+    <ThemeProvider theme={theme}>
+        <ChatPage />
+    </ThemeProvider>
+);
