@@ -42,7 +42,7 @@ export const useGetMessages = () => {
 
     // Poll for new messages
     useEffect(() => {
-        const interval = setInterval(refresh, 5000);
+        const interval = setInterval(refresh, 3000);
         return () => {
             clearInterval(interval);
         };

@@ -10,7 +10,7 @@ spec:
         height: -1
         width: 150
         left: 220
-        top: 212.8
+        top: 84
       id: 18f559f7-5dd9-40c1-a160-14bf9606141e
       name: Messages
     - block:
@@ -18,8 +18,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 644
-        top: 397
+        left: 517
+        top: 227
       id: 90b895b2-5139-47c3-b662-4f31af3f09df
       name: Chat App
     - block:
@@ -27,8 +27,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 1105
-        top: 209
+        left: 815
+        top: 84
       id: a8f7df35-086f-4a71-aa41-6a357c73fd33
       name: HTTP Gateway
   connections:
