@@ -2,13 +2,21 @@ import { useEffect, useMemo } from 'react';
 import { useAsyncRetry } from 'react-use';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { Message } from '../../../entities/Message';
+import { uniqueNamesGenerator, Config, animals, adjectives } from 'unique-names-generator';
+
+const uniqueNamesConfig: Config = {
+    dictionaries: [adjectives, animals],
+    separator: ' ',
+    length: 2,
+    style: 'capital',
+};
 
 export const useAuthorId = () => {
     const storedAuthorId = localStorage.getItem('authorId');
     if (storedAuthorId) {
         return storedAuthorId;
     }
-    const authorId = new Date().getTime().toString();
+    const authorId = uniqueNamesGenerator(uniqueNamesConfig);
     localStorage.setItem('authorId', authorId);
     return authorId;
 };

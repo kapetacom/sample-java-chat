@@ -36,7 +36,8 @@
         "random-avatar-generator": "^2.0.0",
         "react-use": "^17.4.0",
         "ts-node": "^10.9.1",
-        "typescript": "^5.0.4"
+        "typescript": "^5.0.4",
+        "unique-names-generator": "^4.7.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.20.7",

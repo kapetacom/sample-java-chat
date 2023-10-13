@@ -93,7 +93,7 @@ export const Messages = (props: ChatMessageGroupProps) => {
                             </IconButton>
                             <Box sx={{ display: 'flex', gap: 1, order: isMe ? 2 : 1 }}>
                                 <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                    {isMe ? 'You' : 'Anonymous'}
+                                    {`${authorId}${isMe ? ' (You)' : ''}`}
                                 </Typography>
                                 <Typography variant="body2">
                                     {new Date(message.createdAt).toLocaleTimeString(undefined, {
