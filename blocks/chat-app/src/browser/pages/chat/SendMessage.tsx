@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Box, TextField, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { MessagesClient } from '../../clients/MessagesClient';
-import { useAuthorId } from './hooks';
+import { useAuthorName } from './hooks';
 
 export interface SendMessageProps {
     onSend: () => void;
@@ -10,7 +10,7 @@ export interface SendMessageProps {
 
 export const SendMessage = (props: SendMessageProps) => {
     const { onSend } = props;
-    const authorId = useAuthorId();
+    const authorName = useAuthorName();
     const apiClient = useMemo(() => new MessagesClient(), []);
     const inputRef = useRef<HTMLInputElement>(null);
     const [isButtonDisabled, setButtonDisabled] = useState(true);
@@ -37,10 +37,11 @@ export const SendMessage = (props: SendMessageProps) => {
             return;
         }
         apiClient
-            .addMessage({ text: value, authorId })
+            .addMessage({ text: value, authorName })
             .then(() => {
                 if (inputRef.current) {
                     inputRef.current.value = '';
+                    setButtonDisabled(true);
                 }
             })
             .then(onSend)

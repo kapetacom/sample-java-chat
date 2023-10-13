@@ -3,18 +3,19 @@ import { Message } from '../../../entities/Message';
 import { Box, IconButton, Typography } from '@mui/material';
 import { UserAvatar } from './UserAvatar';
 import { MessagesClient } from '../../clients/MessagesClient';
-import { useAuthorId } from './hooks';
+import { useAuthorName } from './hooks';
 import CloseIcon from '@mui/icons-material/Close';
+import { NonEmptyArray } from './types';
 
 export interface ChatMessageGroupProps {
-    messages: Message[];
+    messages: NonEmptyArray<Message>;
     onDelete: () => void;
 }
 
 export const Messages = (props: ChatMessageGroupProps) => {
     const { messages, onDelete } = props;
-    const authorId = messages[0].authorId;
-    const isMe = messages[0].authorId === useAuthorId();
+    const authorName = messages[0].authorName;
+    const isMe = messages[0].authorName === useAuthorName();
     const messageColor = isMe ? '#E4E4E4' : '#E1F5FE';
     const apiClient = useMemo(() => new MessagesClient(), []);
 
@@ -93,7 +94,7 @@ export const Messages = (props: ChatMessageGroupProps) => {
                             </IconButton>
                             <Box sx={{ display: 'flex', gap: 1, order: isMe ? 2 : 1 }}>
                                 <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                    {`${authorId}${isMe ? ' (You)' : ''}`}
+                                    {`${authorName}${isMe ? ' (You)' : ''}`}
                                 </Typography>
                                 <Typography variant="body2">
                                     {new Date(message.createdAt).toLocaleTimeString(undefined, {
@@ -107,7 +108,7 @@ export const Messages = (props: ChatMessageGroupProps) => {
                     </Box>
                 ))}
             </Box>
-            <UserAvatar authorId={authorId} sx={{ order: isMe ? 2 : 1 }} />
+            <UserAvatar authorName={authorName} sx={{ order: isMe ? 2 : 1 }} />
         </Box>
     );
 };

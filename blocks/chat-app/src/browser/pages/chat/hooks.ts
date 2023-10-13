@@ -3,6 +3,7 @@ import { useAsyncRetry } from 'react-use';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { Message } from '../../../entities/Message';
 import { uniqueNamesGenerator, Config, animals, adjectives } from 'unique-names-generator';
+import { NonEmptyArray } from './types';
 
 const uniqueNamesConfig: Config = {
     dictionaries: [adjectives, animals],
@@ -11,14 +12,14 @@ const uniqueNamesConfig: Config = {
     style: 'capital',
 };
 
-export const useAuthorId = () => {
-    const storedAuthorId = localStorage.getItem('authorId');
-    if (storedAuthorId) {
-        return storedAuthorId;
+export const useAuthorName = () => {
+    const storedAuthorName = localStorage.getItem('authorName');
+    if (storedAuthorName) {
+        return storedAuthorName;
     }
-    const authorId = uniqueNamesGenerator(uniqueNamesConfig);
-    localStorage.setItem('authorId', authorId);
-    return authorId;
+    const authorName = uniqueNamesGenerator(uniqueNamesConfig);
+    localStorage.setItem('authorName', authorName);
+    return authorName;
 };
 
 export const useGetMessages = () => {
@@ -30,7 +31,7 @@ export const useGetMessages = () => {
     // Messages from the same author are grouped together if they were sent sequentially (i.e.
     // without another author's messages in between)
     const messageGroups = useMemo(() => {
-        const groups: Message[][] = [];
+        const groups: NonEmptyArray<Message>[] = [];
 
         for (const message of messages) {
             if (groups.length === 0) {
@@ -38,7 +39,7 @@ export const useGetMessages = () => {
             } else {
                 const lastGroup = groups[groups.length - 1];
                 const lastMessage = lastGroup[lastGroup.length - 1];
-                if (lastMessage.authorId === message.authorId) {
+                if (lastMessage.authorName === message.authorName) {
                     lastGroup.push(message);
                 } else {
                     groups.push([message]);

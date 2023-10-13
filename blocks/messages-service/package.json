@@ -7,6 +7,7 @@
         "start:dev:docker": "NODE_ENV=development npm run migrate:generate --if-present && npm run migrate --if-present && nodemon --exitcrash --ext ts,tsx,js,json,yaml,yml --watch '**/*' index.ts",
         "start": "NODE_ENV=production npm run migrate --if-present && ts-node --transpile-only index.ts",
         "migrate:db:messages": "cross-env-shell DATABASE_URL=$(npx kap-mongodb-url messages) prisma db push --schema ./db/messages/schema.prisma",
+        "reset:db:messages": "cross-env-shell DATABASE_URL=$(npx kap-mongodb-url messages) prisma db push --force-reset --schema=./db/messages/schema.prisma",
         "migrate:generate:messages": "prisma generate --schema ./db/messages/schema.prisma",
         "migrate:dev": "npm-run-pattern migrate:dev:",
         "migrate:generate": "npm-run-pattern migrate:generate:",
