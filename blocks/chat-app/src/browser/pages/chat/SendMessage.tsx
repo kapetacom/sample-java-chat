@@ -10,24 +10,12 @@ export interface SendMessageProps {
 
 export const SendMessage = (props: SendMessageProps) => {
     const { onSend } = props;
+
     const authorName = useAuthorName();
     const apiClient = useMemo(() => new MessagesClient(), []);
     const inputRef = useRef<HTMLInputElement>(null);
-    const [isButtonDisabled, setButtonDisabled] = useState(true);
-
-    useEffect(() => {
-        const checkInputValue = () => {
-            const value = inputRef.current?.value;
-            setButtonDisabled(!value);
-        };
-
-        const input = inputRef.current;
-
-        input?.addEventListener('input', checkInputValue);
-        return () => {
-            input?.removeEventListener('input', checkInputValue);
-        };
-    }, []);
+    const [text, setText] = useState('');
+    const isButtonDisabled = text === '';
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -38,12 +26,7 @@ export const SendMessage = (props: SendMessageProps) => {
         }
         apiClient
             .addMessage({ text: value, authorName })
-            .then(() => {
-                if (inputRef.current) {
-                    inputRef.current.value = '';
-                    setButtonDisabled(true);
-                }
-            })
+            .then(() => setText(''))
             .then(onSend)
             .catch(console.error);
     };
@@ -55,6 +38,8 @@ export const SendMessage = (props: SendMessageProps) => {
                 name="message"
                 inputRef={inputRef}
                 fullWidth
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 InputProps={{
                     placeholder: 'Send a message',
                     sx: {
