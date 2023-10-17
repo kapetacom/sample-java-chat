@@ -5,99 +5,50 @@ This file will be overwritten every time you change the service definition in Ka
 
 ## Structure
 This service is structured as follows:
-* src/data: Contains anything related to databases
-* src/entities: Contains the entities used by the service. 
+* ```src/main/java/com/kapeta/sample/repositories```: Contains anything related to databases
+* ```src/main/java/com/kapeta/sample/dto```: Contains the entities used by the service.
+* ```src/main/java/com/kapeta/sample/gen```: Contains the generated files that you shouldn't edit directly.
   * These are generated files and should not be edited directly
-* src/rest: Contains the REST API routes. 
+* ```src/main/java/com/kapeta/sample/gen/rest```: Contains the REST API routes.
+* ```src/main/java/com/kapeta/sample/gen/service```: Contains the REST interfaces.
   * These are generated files and should not be edited directly
-* src/service: Contains the service layer logic. This is where you should add your business logic
+* ```src/main/java/com/kapeta/sample/service```: Contains the service layer logic. This is where you should add your business logic
 
 ## REST API 
 To edit the REST API handlers edit the services found here:
-* [src/service/MessagesRouteService.tsx](src/service/MessagesRouteService.tsx)
+* [src/main/java/com/kapeta/sample/service/MessagesService.java](src/main/java/com/kapeta/sample/service/MessagesService.java)
 
-The transport layer is abstracted away - so your service
+The REST layer itself is generated for you - so your service
 will be called as specified within the REST API definition in Kapeta.
 
 You just need to worry about the logic.
 
-These are generated as TSX files to make it simple to render emails using JSX syntax.
-
 The service files will only be generated if they don't already exist - or if they have not
 changed since the last time they were generated.
 
-### Errors
-To throw an error with a specific HTTP status code from a REST API handler - use the following code:
-```ts
-import { RESTError } from '@kapeta/sdk-rest-route';
-throw new RESTError('User not found', 404);
-```
-Any exceptions thrown that are not RESTError will be converted to a 500 error.
 
 ## MongoDB: messages
-To use the "messages" MongoDB database - simply add the following code to your service:
+To use the "messages" MongoDB database - simply create Spring
+repositories in this package:
 
-```typescript
-import { MessagesDB } from '../data/MessagesDB';
+```com.kapeta.sample.repositories.messages```
 
-class MyService {
-    private db: MessagesDB;
-    
-    constructor() {
-        /**
-         * Note: The database is not ready initially. It will be loaded during startup.
-         * It is guaranteed to be ready before the first request is handled.
-         * This means that the this.db.client property will not be ready during startup.
-         */
-        this.db = new MessagesDB();
-    }
+These will be picked up and used by the database.
 
-    /**
-     * The database client. 
-     * A simple helper to make it a little shorter to access the database.
-     */
-    private get client() {
-        return this.db.client;
-    }
+If you extend ```com.kapeta.spring.mongo.repository.BaseMongoRepository``` in your repositories
+you'll get some extra functionality for free.
 
-    /**
-     * Example of how to use the database client.
-     */
-    async getMessages() {
-        return await this.client.messages.findMany({});
-    }
-}
-```
 ### Schema changes
-This service uses Prisma to manage the database schema.
+This service uses Mongock to apply database migrations to **messages**. 
+You simply define changes in a class annotated with ```@ChangeLog```, 
+```@ChangeUnit``` or ```@ChangeSet```.
 
-A prisma schema looks something like this:
-```prisma
-model Messages {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name      String?
-  createdAt DateTime
-  updatedAt DateTime
+These classes should be placed in the following package:
+```com.kapeta.sample.repositories.messages.migrations```
 
-  @@map("messages")
-}
-```
+See Mongock documentation for more information:
+[https://docs.mongock.io/v5/migration/index.html](https://docs.mongock.io/v5/migration/index.html)
 
-To edit the **messages** database schema edit the Prisma schema files here:
-- [db/messages/schema.prisma](db/messages/schema.prisma)
-
-Read more about Prisma here:
-https://pris.ly/d/prisma-schema
-
-When you are done editing the schema,
-run the following command to generate a new database migration file:
-```bash
-npm run migrate:dev
-```
-
-Run the following command to apply the migration to your database:
-```bash
-npm run migrate
-```
+When you have added migrations you simply (re)start the application to apply them. 
 
 

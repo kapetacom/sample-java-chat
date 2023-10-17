@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: kapeta/sample-java-chat-messages-service
+  data:
+    mongodb:
+      auto-index-creation: true
+mongock:
+  transaction-strategy: change_unit
+  transaction-enabled: true
+  migration-scan-package:
+    - "com.kapeta.sample.repositories.messages.migrations"
