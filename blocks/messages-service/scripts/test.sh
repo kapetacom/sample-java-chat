@@ -3,6 +3,6 @@
 trap "exit" INT TERM ERR
 trap "kill 0" EXIT
 
-mvn spring-boot:run "$@" &
+mvn test "$@" &
 
 wait

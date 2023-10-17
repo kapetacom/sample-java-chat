@@ -1,28 +1,23 @@
 # kapeta/sample-java-chat-messages-service
 
-Kapeta block implemented using Language Target "NodeJS"
+Kapeta block implemented using Language Target "Java Spring Boot"
 
 See the [kapeta.md](kapeta.md) readme file for more information.
 
 ## Prerequisites
 - Docker installed and running
 - Kapeta Desktop installed and running
-- NodeJS 20+
+- Java 21+
 
 ## Setup
 
 To prepare / setup the service, run the following command:
 ```bash
-npm install
+mvn compile
 ```
 
 ## Running
-To run the service in production mode, run the following commands:
+To run the service, use the following commands:
 ```bash
-npm start
-```
-
-To run the service in dev mode using nodemon, run the following commands:
-```bash
-npm run start:dev
+mvn spring-boot:run
 ```
