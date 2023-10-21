@@ -17,26 +17,36 @@ export class MessagesClient {
      * Get all messages
      * HTTP: GET /api/messages
      */
-    getMessages(): Promise<Message[]> {
-        return this.client.execute("GET", "/messages", []);
+    async getMessages(): Promise<Message[] | null> {
+        const result = await this.client.execute("GET", "/messages", []);
+
+        if (result === null) {
+            return null;
+        }
+        return result as Message[];
     }
 
     /**
      * Add message
      * HTTP: POST /api/messages
      */
-    addMessage(message: CreateMessage): Promise<Message> {
-        return this.client.execute("POST", "/messages", [
+    async addMessage(message: CreateMessage): Promise<Message | null> {
+        const result = await this.client.execute("POST", "/messages", [
             { name: "message", value: message, transport: "BODY" },
         ]);
+
+        if (result === null) {
+            return null;
+        }
+        return result as Message;
     }
 
     /**
      * Delete message
      * HTTP: DELETE /api/messages/{id}
      */
-    deleteMessage(id: string): Promise<void> {
-        return this.client.execute("DELETE", "/messages/{id}", [
+    async deleteMessage(id: string): Promise<void> {
+        await this.client.execute("DELETE", "/messages/{id}", [
             { name: "id", value: id, transport: "PATH" },
         ]);
     }
@@ -45,7 +55,7 @@ export class MessagesClient {
      * Delete all messages
      * HTTP: DELETE /api/messages
      */
-    deleteAllMessages(): Promise<void> {
-        return this.client.execute("DELETE", "/messages", []);
+    async deleteAllMessages(): Promise<void> {
+        await this.client.execute("DELETE", "/messages", []);
     }
 }
