@@ -5,6 +5,6 @@
 export interface Message {
     id: string;
     text: string;
-    createdAt: Date;
+    createdAt: number;
     authorName: string;
 }

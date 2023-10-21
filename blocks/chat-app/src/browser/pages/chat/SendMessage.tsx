@@ -1,6 +1,6 @@
 import React, { FormEvent, useMemo, useRef, useState } from 'react';
 import { Box, TextField, IconButton } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+import {Send as SendIcon} from '@mui/icons-material';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { useAuthorName } from './hooks';
 

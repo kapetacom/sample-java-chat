@@ -115,7 +115,7 @@ spec:
             arguments: {}
         source:
           type: kapeta-dsl
-          value: |-
+          value: |
             //Get all messages
             @GET("/messages")
             getMessages(): Message[]
@@ -128,6 +128,7 @@ spec:
             @DELETE("/messages/{id}")
             deleteMessage(@Path id:string): void
 
+
             //Delete all messages
             @DELETE("/messages")
             deleteAllMessages(): void
@@ -139,7 +140,7 @@ spec:
         port:
           type: mongodb
   target:
-    kind: kapeta/language-target-java-spring-boot:0.1.3
+    kind: kapeta/language-target-java-spring-boot:0.2.0
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta

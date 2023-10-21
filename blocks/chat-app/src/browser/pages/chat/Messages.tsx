@@ -4,8 +4,9 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { UserAvatar } from './UserAvatar';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { useAuthorName } from './hooks';
-import CloseIcon from '@mui/icons-material/Close';
+import { Close as CloseIcon } from '@mui/icons-material';
 import { NonEmptyArray } from './types';
+
 
 export interface ChatMessageGroupProps {
     messages: NonEmptyArray<Message>;
