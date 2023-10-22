@@ -1,7 +1,7 @@
 kind: core/plan
 metadata:
   name: kapeta/sample-java-chat-plan
-  title: Sample Java Chat
+  title: Quick Chat (Sample)
   visibility: public
 spec:
   blocks:
