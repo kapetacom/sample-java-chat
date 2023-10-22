@@ -141,4 +141,4 @@ spec:
             @DELETE("/messages")
             deleteAllMessages(): void
   target:
-    kind: kapeta/language-target-react-ts:0.0.37
+    kind: kapeta/language-target-react-ts:0.0.38
