@@ -32,11 +32,7 @@
     "devDependencies": {
         "@babel/cli": "^7.23.0",
         "@babel/core": "^7.23.2",
-        "@babel/plugin-proposal-class-properties": "^7.18.6",
         "@babel/plugin-proposal-decorators": "^7.23.2",
-        "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-        "@babel/plugin-proposal-private-methods": "^7.18.6",
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@babel/preset-env": "^7.23.2",
         "@babel/preset-react": "^7.22.15",
         "@babel/preset-typescript": "^7.23.2",
@@ -59,7 +55,6 @@
         "less": "^4.2.0",
         "less-loader": "^11.1.3",
         "mini-css-extract-plugin": "^2.7.6",
-        "node-sass": "^9.0.0",
         "nodemon": "^2.0.22",
         "prettier": "^2.8.8",
         "random-avatar-generator": "^2.0.0",
@@ -75,6 +70,7 @@
         "webpack-dev-middleware": "^6.1.1",
         "webpack-hot-middleware": "^2.25.4",
         "@emotion/react": "^11.11.1",
-        "@emotion/styled": "^11.11.0"
+        "@emotion/styled": "^11.11.0",
+        "sass": "^1.69.4"
     }
 }
