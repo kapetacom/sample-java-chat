@@ -80,7 +80,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.9
+    - kind: kapeta/resource-type-rest-client:1.0.10
       metadata:
         name: messages
       spec:
