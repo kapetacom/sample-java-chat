@@ -17,3 +17,7 @@ kap registry push
 ## Deploying the plan
 
 Visit [app.kapeta.com](https://app.kapeta.com/deployments) to deploy the plan.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
