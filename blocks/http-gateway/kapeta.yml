@@ -1,4 +1,4 @@
-kind: kapeta/block-type-gateway-http:2.0.4
+kind: kapeta/block-type-gateway-http:2.0.5
 metadata:
   name: kapeta/sample-java-chat-http-gateway
   title: HTTP Gateway
@@ -7,7 +7,7 @@ spec:
   entities: {}
   providers: []
   consumers:
-    - kind: kapeta/resource-type-web-fragment:0.0.11
+    - kind: kapeta/resource-type-web-fragment:0.0.12
       metadata:
         name: chat
       spec:
