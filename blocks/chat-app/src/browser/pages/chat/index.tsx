@@ -15,8 +15,25 @@ const theme = createTheme({
     },
 });
 
-createRoot(container).render(
-    <ThemeProvider theme={theme}>
-        <ChatPage />
-    </ThemeProvider>
-);
+async function enableApiMocking() {
+    if (process.env.NODE_ENV !== 'development') {
+        return;
+    }
+
+    const { worker } = await import('../../../mocks/browser');
+    await worker.start();
+}
+
+void (async () => {
+    try {
+        await enableApiMocking();
+    } catch (error) {
+        console.error('Failed to enable API mocking', error);
+    }
+
+    createRoot(container).render(
+        <ThemeProvider theme={theme}>
+            <ChatPage />
+        </ThemeProvider>
+    );
+})();
