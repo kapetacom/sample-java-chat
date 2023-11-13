@@ -6,8 +6,9 @@ export const messagesHandlers = [
     /**
      * Get all messages
      * HTTP: GET /api/messages
+     * Response type: Message[]
      */
-    http.get('*/messages/messages', () => {
+    http.get('*/api/rest/messages/messages', () => {
         return HttpResponse.json([
             {
                 id: 'msg001',
@@ -33,8 +34,9 @@ export const messagesHandlers = [
     /**
      * Add message
      * HTTP: POST /api/messages
+     * Response type: Message
      */
-    http.post('*/messages/messages', async ({ request }) => {
+    http.post('*/api/rest/messages/messages', async ({ request }) => {
         const message = (await request.json()) as CreateMessage;
         return HttpResponse.json({
             id: 'msg004',
@@ -42,5 +44,23 @@ export const messagesHandlers = [
             createdAt: Date.now(),
             authorName: message.authorName,
         } satisfies Message);
+    }),
+
+    /**
+     * Delete message
+     * HTTP: DELETE /api/messages/{id}
+     * Response type: void
+     */
+    http.delete('*/api/rest/messages/messages/:id', () => {
+        return new HttpResponse(null, { status: 200 });
+    }),
+
+    /**
+     * Delete all messages
+     * HTTP: DELETE /api/messages
+     * Response type: void
+     */
+    http.delete('*/api/rest/messages/messages', () => {
+        return new HttpResponse(null, { status: 200 });
     }),
 ];
