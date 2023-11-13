@@ -1,6 +1,6 @@
 declare global {
     interface Window {
-        enableMockApi: (enable: boolean) => void;
+        enableMockApi?: (enable: boolean) => void;
     }
 }
 
