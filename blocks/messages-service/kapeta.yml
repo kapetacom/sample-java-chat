@@ -71,7 +71,7 @@ spec:
             authorName: string
         }
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.12
+    - kind: kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: messages
       spec:
@@ -140,7 +140,7 @@ spec:
         port:
           type: mongodb
   target:
-    kind: kapeta/language-target-java-spring-boot:0.2.4
+    kind: kapeta/language-target-java-spring-boot:0.2.8
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta

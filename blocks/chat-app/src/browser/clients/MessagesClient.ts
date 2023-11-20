@@ -15,7 +15,7 @@ export class MessagesClient {
 
     /**
      * Get all messages
-     * HTTP: GET /api/messages
+     * HTTP: GET /api/rest/messages/messages
      */
     async getMessages(): Promise<Message[] | null> {
         const result = await this.client.execute("GET", "/messages", []);
@@ -28,7 +28,7 @@ export class MessagesClient {
 
     /**
      * Add message
-     * HTTP: POST /api/messages
+     * HTTP: POST /api/rest/messages/messages
      */
     async addMessage(message: CreateMessage): Promise<Message | null> {
         const result = await this.client.execute("POST", "/messages", [
@@ -43,7 +43,7 @@ export class MessagesClient {
 
     /**
      * Delete message
-     * HTTP: DELETE /api/messages/{id}
+     * HTTP: DELETE /api/rest/messages/messages/{id}
      */
     async deleteMessage(id: string): Promise<void> {
         await this.client.execute("DELETE", "/messages/{id}", [
@@ -53,7 +53,7 @@ export class MessagesClient {
 
     /**
      * Delete all messages
-     * HTTP: DELETE /api/messages
+     * HTTP: DELETE /api/rest/messages/messages
      */
     async deleteAllMessages(): Promise<void> {
         await this.client.execute("DELETE", "/messages", []);
