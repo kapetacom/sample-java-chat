@@ -71,7 +71,7 @@ spec:
             authorName: string
         }
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.14
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: messages
       spec:
@@ -133,14 +133,14 @@ spec:
             @DELETE("/messages")
             deleteAllMessages(): void
   consumers:
-    - kind: kapeta/resource-type-mongodb:0.0.11
+    - kind: kapeta://kapeta/resource-type-mongodb:0.0.11
       metadata:
         name: messages
       spec:
         port:
           type: mongodb
   target:
-    kind: kapeta/language-target-java-spring-boot:0.2.8
+    kind: kapeta://kapeta/language-target-java-spring-boot:0.2.9
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta
