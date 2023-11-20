@@ -80,7 +80,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.12
+    - kind: kapeta/resource-type-rest-client:1.0.14
       metadata:
         name: messages
       spec:
@@ -141,4 +141,4 @@ spec:
             @DELETE("/messages")
             deleteAllMessages(): void
   target:
-    kind: kapeta/language-target-react-ts:0.0.40
+    kind: kapeta/language-target-react-ts:0.2.1

@@ -18,7 +18,7 @@ class MessagesClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: GET /messages
+     * HTTP: GET /api/rest/messages/messages
      */
     async getMessages(): Promise<Message[] | null> {
         const result = await this.client.execute("GET", "/messages", []);
@@ -35,7 +35,7 @@ class MessagesClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /messages
+     * HTTP: POST /api/rest/messages/messages
      */
     async addMessage(message: CreateMessage): Promise<Message | null> {
         const result = await this.client.execute("POST", "/messages", [
@@ -54,7 +54,7 @@ class MessagesClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: DELETE /messages/{id}
+     * HTTP: DELETE /api/rest/messages/messages/{id}
      */
     async deleteMessage(id: string): Promise<void> {
         await this.client.execute("DELETE", "/messages/{id}", [
@@ -68,7 +68,7 @@ class MessagesClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: DELETE /messages
+     * HTTP: DELETE /api/rest/messages/messages
      */
     async deleteAllMessages(): Promise<void> {
         await this.client.execute("DELETE", "/messages", []);
