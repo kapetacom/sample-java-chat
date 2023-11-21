@@ -10,8 +10,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 220
-        top: 145
+        left: 223
+        top: 162
       id: 18f559f7-5dd9-40c1-a160-14bf9606141e
       name: Messages
     - block:
@@ -19,8 +19,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 734
-        top: 296
+        left: 682
+        top: 167
       id: 90b895b2-5139-47c3-b662-4f31af3f09df
       name: Chat App
     - block:
@@ -28,16 +28,16 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 1086
-        top: 57
+        left: 1164
+        top: 162
       id: a8f7df35-086f-4a71-aa41-6a357c73fd33
       name: HTTP Gateway
   connections:
     - provider:
-        resourceName: restapi
+        resourceName: messages
         blockId: 18f559f7-5dd9-40c1-a160-14bf9606141e
       consumer:
-        resourceName: restapi
+        resourceName: messages
         blockId: 90b895b2-5139-47c3-b662-4f31af3f09df
       port:
         name: rest
@@ -64,25 +64,3 @@ spec:
       port:
         name: http
         type: web
-    - provider:
-        resourceName: messages
-        blockId: 18f559f7-5dd9-40c1-a160-14bf9606141e
-      consumer:
-        resourceName: messages
-        blockId: 90b895b2-5139-47c3-b662-4f31af3f09df
-      port:
-        name: rest
-        type: rest
-      mapping:
-        getMessages:
-          targetId: getMessages
-          type: EXACT
-        addMessage:
-          targetId: addMessage
-          type: EXACT
-        deleteMessage:
-          targetId: deleteMessage
-          type: EXACT
-        deleteAllMessages:
-          targetId: deleteAllMessages
-          type: EXACT
