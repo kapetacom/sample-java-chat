@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - production
   workflow_dispatch:
 jobs:
   release:
@@ -22,9 +22,8 @@ jobs:
         id: kapeta-registry-push
         uses: kapetacom/core-registry-action@v4
         with:
-          credentials: ${{ secrets.KAPETA_TOKEN_STAGING }}
-          staging: true
-          base_url: ${{ secrets.KAPETA_STAGING_URL }}
+          credentials: ${{ secrets.KAPETA_TOKEN }}
+          release_branch: production
           action: publish
 
       - name: slack - GitHub Actions Slack integration
