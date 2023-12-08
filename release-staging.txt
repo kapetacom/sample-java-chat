@@ -1,0 +1,2 @@
+export KAPETA_RELEASE_BRANCH=staging 
+kap registry publish --ignore-working-directory
