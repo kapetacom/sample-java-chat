@@ -1,8 +1,9 @@
 import React, { FormEvent, useMemo, useRef, useState } from 'react';
-import { Box, TextField, IconButton } from '@mui/material';
-import {Send as SendIcon} from '@mui/icons-material';
+import { Box, TextField, IconButton, useTheme } from '@mui/material';
+import { Send as SendIcon } from '@mui/icons-material';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { useAuthorName } from './hooks';
+import { useMedia } from 'react-use';
 
 export interface SendMessageProps {
     onSend: () => void;
@@ -16,6 +17,9 @@ export const SendMessage = (props: SendMessageProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [text, setText] = useState('');
     const isButtonDisabled = text === '';
+
+    const theme = useTheme();
+    const isMobile = useMedia('(max-width: 600px)');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,7 +36,22 @@ export const SendMessage = (props: SendMessageProps) => {
     };
 
     return (
-        <Box component="form" onSubmit={handleSubmit} sx={{ m: 0, p: 2, backgroundColor: '#E0E0E0' }}>
+        <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+                m: 0,
+                p: 2,
+                backgroundColor: '#E0E0E0',
+                [theme.breakpoints.down('sm')]: {
+                    input: {
+                        fontSize: '1.5rem',
+                        pl: 3,
+                        py: 3,
+                    },
+                },
+            }}
+        >
             <TextField
                 type="text"
                 name="message"
@@ -47,8 +66,9 @@ export const SendMessage = (props: SendMessageProps) => {
                         borderRadius: '56px',
                     },
                     endAdornment: (
-                        <IconButton type="submit" disabled={isButtonDisabled}>
+                        <IconButton type="submit" disabled={isButtonDisabled} size={isMobile ? 'large' : 'medium'}>
                             <SendIcon
+                                fontSize={isMobile ? 'large' : 'medium'}
                                 sx={{
                                     color: isButtonDisabled ? 'action.disabled' : 'action.active',
                                 }}

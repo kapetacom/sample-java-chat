@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
 import { Message } from '../../../entities/Message';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography, useTheme } from '@mui/material';
 import { UserAvatar } from './UserAvatar';
 import { MessagesClient } from '../../clients/MessagesClient';
 import { useAuthorName } from './hooks';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { NonEmptyArray } from './types';
-
 
 export interface ChatMessageGroupProps {
     messages: NonEmptyArray<Message>;
@@ -24,6 +23,8 @@ export const Messages = (props: ChatMessageGroupProps) => {
         apiClient.deleteMessage(id).then(onDelete).catch(console.error);
     };
 
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -40,6 +41,9 @@ export const Messages = (props: ChatMessageGroupProps) => {
                     gap: 0.5,
                     order: isMe ? 1 : 2,
                     width: '60%',
+                    [theme.breakpoints.down('sm')]: {
+                        width: 'calc(100% - 105px)',
+                    },
                 }}
             >
                 {messages.map((message) => (
@@ -54,6 +58,12 @@ export const Messages = (props: ChatMessageGroupProps) => {
                             py: 1,
                             px: 1.5,
                             borderRadius: 1,
+
+                            [theme.breakpoints.down('sm')]: {
+                                py: 2,
+                                px: 3,
+                            },
+
                             '&:hover': {
                                 button: {
                                     opacity: 0.5,
@@ -79,7 +89,12 @@ export const Messages = (props: ChatMessageGroupProps) => {
                             },
                         }}
                     >
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
                             <IconButton
                                 onClick={() => handleDelete(message.id)}
                                 size="small"
@@ -93,7 +108,13 @@ export const Messages = (props: ChatMessageGroupProps) => {
                             >
                                 <CloseIcon fontSize="inherit" />
                             </IconButton>
-                            <Box sx={{ display: 'flex', gap: 1, order: isMe ? 2 : 1 }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    gap: 1,
+                                    order: isMe ? 2 : 1,
+                                }}
+                            >
                                 <Typography variant="body2" sx={{ fontWeight: 600 }}>
                                     {`${authorName}${isMe ? ' (You)' : ''}`}
                                 </Typography>
