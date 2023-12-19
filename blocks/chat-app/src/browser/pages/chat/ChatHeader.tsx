@@ -1,9 +1,11 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { PersonLeft } from '../../components/illustrations/PersonLeft';
 import { PersonRight } from '../../components/illustrations/PersonRight';
 
 export const ChatHeader = () => {
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -18,6 +20,11 @@ export const ChatHeader = () => {
                     position: 'absolute',
                     bottom: '-32px',
                     left: '-37px',
+                    [theme.breakpoints.down('sm')]: {
+                        left: '0',
+                        bottom: '-39px',
+                        transform: 'scale(0.8)',
+                    },
                 }}
             />
             <Typography
@@ -31,6 +38,12 @@ export const ChatHeader = () => {
                     pb: 2,
                     color: 'white',
                     textAlign: 'center',
+                    whiteSpace: 'nowrap',
+                    [theme.breakpoints.down('sm')]: {
+                        fontSize: 'clamp(16px, 7vw, 50px)',
+                        px: 11,
+                        whiteSpace: 'normal',
+                    },
                 }}
             >
                 Quick Chat!
@@ -40,6 +53,11 @@ export const ChatHeader = () => {
                     position: 'absolute',
                     bottom: '-32px',
                     right: '-37px',
+                    [theme.breakpoints.down('sm')]: {
+                        right: '0',
+                        bottom: '-39px',
+                        transform: 'scale(0.8)',
+                    },
                 }}
             />
         </Box>
