@@ -1,7 +1,8 @@
 package com.kapeta.sample.dto;
 
-import com.kapeta.sample.gen.dto.CreateMessageBase;
+import com.kapeta.sample.dto.CreateMessageBase;
 import lombok.*;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class CreateMessageDTO extends CreateMessageBase {}

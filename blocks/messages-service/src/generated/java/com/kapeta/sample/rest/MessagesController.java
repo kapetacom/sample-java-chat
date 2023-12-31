@@ -1,10 +1,10 @@
 /**
  * GENERATED SOURCE - DO NOT EDIT
  */
-package com.kapeta.sample.gen.rest;
+package com.kapeta.sample.rest;
 
 import com.kapeta.sample.dto.*;
-import com.kapeta.sample.gen.service.IMessagesService;
+import com.kapeta.sample.service.IMessagesService;
 import com.kapeta.spring.annotation.*;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;

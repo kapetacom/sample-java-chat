@@ -5,12 +5,15 @@ This file will be overwritten every time you change the service definition in Ka
 
 ## Structure
 This service is structured as follows:
-* ```src/main/java/com/kapeta/sample/repositories```: Contains anything related to databases
-* ```src/main/java/com/kapeta/sample/dto```: Contains the entities used by the service.
-* ```src/main/java/com/kapeta/sample/gen```: Contains the generated files that you shouldn't edit directly.
+* ```src/generated```: Contains generated code that shouldn't be edited directly
+* ```src/main```: Contains your own and generated code that you can and should edit
+
+In the sub folder structure you'll find the following:
+* ```src/generated/java/com/kapeta/sample/repositories```: Contains anything related to databases
+* ```src/generated/java/com/kapeta/sample/dto```: Contains the entities used by the service.
   * These are generated files and should not be edited directly
-* ```src/main/java/com/kapeta/sample/gen/rest```: Contains the REST API routes.
-* ```src/main/java/com/kapeta/sample/gen/service```: Contains the REST interfaces.
+* ```src/generated/java/com/kapeta/sample/rest```: Contains the REST API routes.
+* ```src/generated/java/com/kapeta/sample/service```: Contains the REST interfaces.
   * These are generated files and should not be edited directly
 * ```src/main/java/com/kapeta/sample/service```: Contains the service layer logic. This is where you should add your business logic
 

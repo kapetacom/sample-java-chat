@@ -1,7 +1,7 @@
 /**
  * GENERATED SOURCE - DO NOT EDIT
  */
-package com.kapeta.sample.gen.service;
+package com.kapeta.sample.service;
 
 import com.kapeta.sample.dto.*;
 import java.util.*;

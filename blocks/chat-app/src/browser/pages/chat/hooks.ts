@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useAsyncRetry } from 'react-use';
-import { MessagesClient } from '../../clients/MessagesClient';
-import { Message } from '../../../entities/Message';
+import { MessagesClient } from '../../.generated/clients/MessagesClient';
+import { Message } from '../../../.generated/entities/Message';
 import { uniqueNamesGenerator, Config, animals, adjectives } from 'unique-names-generator';
 import { NonEmptyArray } from './types';
 

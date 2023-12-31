@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { Message } from '../../../entities/Message';
+import { Message } from '../../../.generated/entities/Message';
 import { Box, IconButton, Typography, useTheme } from '@mui/material';
 import { UserAvatar } from './UserAvatar';
-import { MessagesClient } from '../../clients/MessagesClient';
+import { MessagesClient } from '../../.generated/clients/MessagesClient';
 import { useAuthorName } from './hooks';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { NonEmptyArray } from './types';

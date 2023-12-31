@@ -1,7 +1,7 @@
 import React, { FormEvent, useMemo, useRef, useState } from 'react';
 import { Box, TextField, IconButton, useTheme } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
-import { MessagesClient } from '../../clients/MessagesClient';
+import { MessagesClient } from '../../.generated/clients/MessagesClient';
 import { useAuthorName } from './hooks';
 import { useMedia } from 'react-use';
 

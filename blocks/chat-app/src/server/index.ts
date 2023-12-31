@@ -1,15 +1,15 @@
-import Path from "path";
-import { Server } from "@kapeta/sdk-server";
-const server = new Server(
-    "kapeta/sample-java-chat-chat-app",
-    Path.resolve(__dirname, "../..")
-);
-import { MessagesProxyRoute } from "./proxies/rest/MessagesProxyRoute";
+import { ConfigProvider, runApp } from '@kapeta/sdk-config';
+import { createServer } from './server';
+import { createRoutes } from './.generated/routes';
+import Path from 'node:path';
 
-server.addRoute(new MessagesProxyRoute());
+const BASE_DIR = Path.resolve(__dirname, '../../dist');
+runApp(async (configProvider: ConfigProvider) => {
+    const server = await createServer(configProvider);
 
-const BASE_DIR = Path.resolve(__dirname, "../../dist");
-const webpackConfig = require("../../webpack.development.config");
-server.configureAssets(BASE_DIR, webpackConfig);
+    server.use(await createRoutes(configProvider));
+    const webpackConfig = require('../../webpack.development.config');
+    server.configureAssets(BASE_DIR, webpackConfig);
 
-server.start("web");
+    server.start('web');
+}, Path.resolve(__dirname, '../../'));
