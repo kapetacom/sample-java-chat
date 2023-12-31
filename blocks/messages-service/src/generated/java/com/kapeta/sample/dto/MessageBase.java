@@ -1,7 +1,7 @@
 /**
  * GENERATED SOURCE - DO NOT EDIT
  */
-package com.kapeta.sample.gen.dto;
+package com.kapeta.sample.dto;
 
 import java.util.*;
 import lombok.*;

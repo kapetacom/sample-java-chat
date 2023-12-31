@@ -1,6 +1,6 @@
 package com.kapeta.sample.service;
 
-import com.kapeta.sample.gen.service.IMessagesService;
+import com.kapeta.sample.service.IMessagesService;
 import com.kapeta.sample.dto.*;
 
 import java.util.*;

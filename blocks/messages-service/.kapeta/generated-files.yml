@@ -6,10 +6,16 @@
 version: 1.0.0
 assets:
   - filename: Dockerfile
-    mode: merge
-    checksum: a69658a501c7dd776a5997412e9b3d4d3530261c
+    mode: create-only
+    checksum: d3e7e5dec0b8199d041d5cabdc5250a1b25764a9
     permissions: "644"
-    modified: 1700517104148
+    modified: 1704018493494
+    merged: false
+  - filename: src/generated/java/com/kapeta/sample/EnableKapeta.java
+    mode: write-always
+    checksum: 5e7547355c78988ad07d11a33962bf2d087dadf3
+    permissions: "644"
+    modified: 1704018493495
     merged: false
   - filename: README.md
     mode: create-only
@@ -19,75 +25,75 @@ assets:
     merged: false
   - filename: src/main/java/com/kapeta/sample/SampleJavaChatMessagesServiceApplication.java
     mode: write-always
-    checksum: cc4209ee7feffd99827b22d9f6c2d1d4389b8575
+    checksum: 0a9172c67cc4f5b48cb9676f565f02af4d674454
     permissions: "644"
-    modified: 1700517104149
+    modified: 1704018493497
     merged: false
   - filename: src/main/resources/application.yml
-    mode: merge
+    mode: create-only
     checksum: 799f816b307674f4c2d1d3965fa0f643ddb0ee37
     permissions: "644"
-    modified: 1700517104150
+    modified: 1704018493497
     merged: false
   - filename: scripts/build.sh
     mode: write-always
     checksum: a600c831308e7720e56b2c7c00927af1f23d75e5
     permissions: "755"
-    modified: 1700517104150
+    modified: 1704018493498
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
     checksum: 61e8f6bc66ea951115a19a8c66d20d2c48e415ac
     permissions: "644"
-    modified: 1700517104150
+    modified: 1704018493499
     merged: false
   - filename: scripts/docker-build.sh
     mode: write-always
     checksum: 1c87535fa243806f5ea9656040434bae34091c58
     permissions: "755"
-    modified: 1700517104150
+    modified: 1704018493500
     merged: false
   - filename: kapeta.md
     mode: write-always
-    checksum: ab1487cb829dfde2130b8009511ea09da777338b
+    checksum: df453f1d27f134a7aafe37da2e831e4f2f283979
     permissions: "644"
-    modified: 1700517104150
+    modified: 1704018493500
     merged: false
   - filename: pom.xml
-    mode: merge-->
-    checksum: 442178156cbcc6f9bfe88479806eb22a0c56b404
+    mode: merge
+    checksum: 1ee1441289a463277efe6ed26e8eabf00c6d300f
     permissions: "644"
-    modified: 1700517104150
+    modified: 1704018493501
     merged: false
   - filename: scripts/start-dev.cmd
     mode: write-always
     checksum: 5d005bd88c946839b56cfb37290960d98f7b623d
     permissions: "644"
-    modified: 1700517104150
+    modified: 1704018493501
     merged: false
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: 9220b74c188d8819965b3a39bed594a7f8d458d7
     permissions: "755"
-    modified: 1700517104150
+    modified: 1704018493502
     merged: false
   - filename: scripts/start-prod.cmd
     mode: write-always
     checksum: 5d005bd88c946839b56cfb37290960d98f7b623d
     permissions: "644"
-    modified: 1700517104151
+    modified: 1704018493502
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: 9220b74c188d8819965b3a39bed594a7f8d458d7
     permissions: "755"
-    modified: 1700517104151
+    modified: 1704018493502
     merged: false
   - filename: scripts/test.sh
     mode: write-always
     checksum: a730f332f4f735d51fd9d0ee79c1135b8aa18d95
     permissions: "755"
-    modified: 1700517104151
+    modified: 1704018493503
     merged: false
   - filename: src/main/java/com/kapeta/sample/dto/MessageDTO.java
     mode: create-only
@@ -95,41 +101,41 @@ assets:
     permissions: "644"
     modified: 1697550689241
     merged: false
-  - filename: src/main/java/com/kapeta/sample/gen/dto/MessageBase.java
+  - filename: src/generated/java/com/kapeta/sample/dto/MessageBase.java
     mode: write-always
-    checksum: 24640aea25ea6bbee27c32f7c75f2099c8a5f29f
+    checksum: 18e8bcdb7451d454c5215e6f28e7172534a66628
     permissions: "644"
-    modified: 1700517104151
+    modified: 1704018493503
     merged: false
   - filename: src/main/java/com/kapeta/sample/dto/CreateMessageDTO.java
     mode: create-only
-    checksum: 0896ae55a6380f74f5f6a9ac240a56d88154c7f6
+    checksum: f07354b00094159bd0fe864702515023be494205
     permissions: "644"
-    modified: 1700517104151
+    modified: 1704018493504
     merged: false
-  - filename: src/main/java/com/kapeta/sample/gen/dto/CreateMessageBase.java
+  - filename: src/generated/java/com/kapeta/sample/dto/CreateMessageBase.java
     mode: write-always
-    checksum: ea1bc972e6df73cd25dada45d4e30360470684a1
+    checksum: 4fbafce34b6a14ef7576105d743eccc28beeed20
     permissions: "644"
-    modified: 1700517104152
+    modified: 1704018493504
     merged: false
-  - filename: src/main/java/com/kapeta/sample/repositories/messages/MessagesConfig.java
+  - filename: src/generated/java/com/kapeta/sample/repositories/messages/MessagesConfig.java
     mode: write-always
     checksum: b21bd849587e225437c8968787d7082e6914f89d
     permissions: "644"
-    modified: 1700517104152
+    modified: 1704018493504
     merged: false
-  - filename: src/main/java/com/kapeta/sample/gen/rest/MessagesController.java
+  - filename: src/generated/java/com/kapeta/sample/rest/MessagesController.java
     mode: write-always
-    checksum: 066371418b7f89c95acb0d067d9ea7b344d8b9a2
+    checksum: 559bd0938e3731392fcb6b2763d2afaede0739f2
     permissions: "644"
-    modified: 1700517104152
+    modified: 1704018493505
     merged: false
-  - filename: src/main/java/com/kapeta/sample/gen/service/IMessagesService.java
+  - filename: src/generated/java/com/kapeta/sample/service/IMessagesService.java
     mode: write-always
-    checksum: 36e2f2144309f46ad8ea64f28e42907e231e0357
+    checksum: aedac5377ab3acfe353aa5015d17ef27a41d36d5
     permissions: "644"
-    modified: 1700517104152
+    modified: 1704018493505
     merged: false
   - filename: src/main/java/com/kapeta/sample/service/MessagesService.java
     mode: create-only

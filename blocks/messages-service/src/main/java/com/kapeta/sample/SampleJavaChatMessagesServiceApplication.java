@@ -1,13 +1,11 @@
+/**
+ * GENERATED SOURCE - DO NOT EDIT
+ */
 package com.kapeta.sample;
 
 import com.kapeta.spring.KapetaApplication;
-import com.kapeta.spring.annotation.KapetaEnableMongoDB;
-import com.kapeta.spring.annotation.KapetaEnableRestResource;
-import com.kapeta.spring.annotation.KapetaSpringApplication;
 
-@KapetaSpringApplication
-@KapetaEnableRestResource
-@KapetaEnableMongoDB
+@EnableKapeta
 public class SampleJavaChatMessagesServiceApplication {
 
     public static void main(String[] args) {

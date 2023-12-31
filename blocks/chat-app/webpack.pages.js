@@ -3,9 +3,9 @@
 //
 const webPages = [];
 webPages.push({
-    name: "chat",
-    path: "/",
-    localPath: "chat",
+    name: 'chat',
+    path: '/',
+    localPath: 'chat',
 });
 
 module.exports = webPages;

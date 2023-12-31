@@ -1,4 +1,4 @@
-kind: kapeta/block-type-service:1.3.5
+kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
   name: kapeta/sample-java-chat-messages-service
   title: Messages Service
@@ -71,7 +71,7 @@ spec:
             authorName: string
         }
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.14
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.16
       metadata:
         name: messages
       spec:
@@ -140,7 +140,7 @@ spec:
         port:
           type: mongodb
   target:
-    kind: kapeta/language-target-java-spring-boot:0.2.8
+    kind: kapeta://kapeta/language-target-java-spring-boot:0.3.1
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta
