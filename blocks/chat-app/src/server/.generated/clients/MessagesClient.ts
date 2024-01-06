@@ -19,7 +19,7 @@ export class MessagesClient extends RestClient {
      * HTTP: GET /messages
      */
     async getMessages(): Promise<Message[] | null> {
-        const result = await this.execute('GET', '/messages', []);
+        const result = await this.$execute('GET', '/messages', []);
 
         if (result === null) {
             return null;
@@ -36,7 +36,7 @@ export class MessagesClient extends RestClient {
      * HTTP: GET /messages
      */
     getMessagesRequest(): RestClientRequest<Message[] | null> {
-        return this.create('GET', '/messages', []);
+        return this.$create('GET', '/messages', []);
     }
 
     /**
@@ -48,7 +48,7 @@ export class MessagesClient extends RestClient {
      * HTTP: POST /messages
      */
     async addMessage(message: CreateMessage): Promise<Message | null> {
-        const result = await this.execute('POST', '/messages', [
+        const result = await this.$execute('POST', '/messages', [
             { name: 'message', value: message, transport: 'BODY' },
         ]);
 
@@ -67,7 +67,7 @@ export class MessagesClient extends RestClient {
      * HTTP: POST /messages
      */
     addMessageRequest(message: CreateMessage): RestClientRequest<Message | null> {
-        return this.create('POST', '/messages', [{ name: 'message', value: message, transport: 'BODY' }]);
+        return this.$create('POST', '/messages', [{ name: 'message', value: message, transport: 'BODY' }]);
     }
 
     /**
@@ -79,7 +79,7 @@ export class MessagesClient extends RestClient {
      * HTTP: DELETE /messages/{id}
      */
     async deleteMessage(id: string): Promise<void> {
-        await this.execute('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        await this.$execute('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
     }
 
     /**
@@ -91,7 +91,7 @@ export class MessagesClient extends RestClient {
      * HTTP: DELETE /messages/{id}
      */
     deleteMessageRequest(id: string): RestClientRequest<void> {
-        return this.create('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        return this.$create('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
     }
 
     /**
@@ -103,7 +103,7 @@ export class MessagesClient extends RestClient {
      * HTTP: DELETE /messages
      */
     async deleteAllMessages(): Promise<void> {
-        await this.execute('DELETE', '/messages', []);
+        await this.$execute('DELETE', '/messages', []);
     }
 
     /**
@@ -115,6 +115,6 @@ export class MessagesClient extends RestClient {
      * HTTP: DELETE /messages
      */
     deleteAllMessagesRequest(): RestClientRequest<void> {
-        return this.create('DELETE', '/messages', []);
+        return this.$create('DELETE', '/messages', []);
     }
 }

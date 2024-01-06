@@ -5,6 +5,6 @@ import { http, HttpResponse } from 'msw';
  * HTTP: DELETE /api/rest/messages/messages
  * Response type: void
  */
-export const deleteAllMessagesHandler = http.delete('*/api/rest/messages/messages', () => {
+export const messages_deleteAllMessagesHandler = http.delete('*/api/rest/messages/messages', () => {
     return new HttpResponse(null, { status: 200 });
 });

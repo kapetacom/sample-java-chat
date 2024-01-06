@@ -13,30 +13,26 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
           text:
             type: string
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
           createdAt:
             type: date
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
           authorName:
             type: string
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: CreateMessage
@@ -45,16 +41,14 @@ spec:
           text:
             type: string
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
           authorName:
             type: string
             description: null
-            properties: null
             secret: false
-            required: false
+            required: true
             global: false
     source:
       type: kapeta-dsl
@@ -71,7 +65,7 @@ spec:
             authorName: string
         }
   providers:
-    - kind: kapeta://kapeta/resource-type-rest-api:1.0.16
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.18
       metadata:
         name: messages
       spec:
@@ -140,7 +134,7 @@ spec:
         port:
           type: mongodb
   target:
-    kind: kapeta://kapeta/language-target-java-spring-boot:0.3.1
+    kind: kapeta://kapeta/language-target-java-spring-boot:0.4.1
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta

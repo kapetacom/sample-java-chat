@@ -6,6 +6,7 @@ package com.kapeta.sample.rest;
 import com.kapeta.sample.dto.*;
 import com.kapeta.sample.service.IMessagesService;
 import com.kapeta.spring.annotation.*;
+import jakarta.validation.Valid;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class MessagesController {
      */
     @ResponseBody
     @RequestMapping(value = "/messages", method = RequestMethod.POST)
-    public MessageDTO addMessage(@RequestBody CreateMessageDTO message)
+    public MessageDTO addMessage(@Valid @RequestBody CreateMessageDTO message)
         throws Exception {
         return service.addMessage(message);
     }

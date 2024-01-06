@@ -5,7 +5,7 @@ import { http, passthrough } from 'msw';
  * HTTP: GET /api/rest/messages/messages
  * Response type: Message[]
  */
-export const getMessagesHandler = http.get('*/api/rest/messages/messages', () => {
+export const messages_getMessagesHandler = http.get('*/api/rest/messages/messages', () => {
     // TODO: Return a response of type Message[]
     return passthrough();
 });
