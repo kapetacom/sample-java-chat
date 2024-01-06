@@ -5,7 +5,7 @@ import { http, passthrough } from 'msw';
  * HTTP: POST /api/rest/messages/messages
  * Response type: Message
  */
-export const addMessageHandler = http.post('*/api/rest/messages/messages', () => {
+export const messages_addMessageHandler = http.post('*/api/rest/messages/messages', () => {
     // TODO: Return a response of type Message
     return passthrough();
 });

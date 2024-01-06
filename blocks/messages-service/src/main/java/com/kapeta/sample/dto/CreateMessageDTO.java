@@ -1,6 +1,5 @@
 package com.kapeta.sample.dto;
 
-import com.kapeta.sample.dto.CreateMessageBase;
 import lombok.*;
 
 @Data
