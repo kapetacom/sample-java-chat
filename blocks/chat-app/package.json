@@ -45,7 +45,7 @@
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
         "@kapeta/eslint-config": "^0.7.0",
         "@kapeta/prettier-config": "^0.6.2",
-        "@kapeta/sdk-web-rest-client": "<2",
+        "@kapeta/sdk-web-rest-client": "^2",
         "@mui/icons-material": "^5.14.14",
         "@mui/material": "^5.14.14",
         "assets-webpack-plugin": "^7.1.1",
