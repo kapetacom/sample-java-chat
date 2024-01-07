@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Message } from '../../../.generated/entities/Message';
 import { Box, IconButton, Typography, useTheme } from '@mui/material';
 import { UserAvatar } from './UserAvatar';
-import { MessagesClient } from '../../.generated/clients/MessagesClient';
+import { useMessagesClient} from '../../.generated/clients/MessagesClient';
 import { useAuthorName } from './hooks';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { NonEmptyArray } from './types';
@@ -17,7 +17,7 @@ export const Messages = (props: ChatMessageGroupProps) => {
     const authorName = messages[0].authorName;
     const isMe = messages[0].authorName === useAuthorName();
     const messageColor = isMe ? '#E4E4E4' : '#E1F5FE';
-    const apiClient = useMemo(() => new MessagesClient(), []);
+    const apiClient = useMessagesClient();
 
     const handleDelete = (id: string) => {
         apiClient.deleteMessage(id).then(onDelete).catch(console.error);

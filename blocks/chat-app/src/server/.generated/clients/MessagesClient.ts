@@ -2,12 +2,35 @@
 // GENERATED SOURCE - DO NOT EDIT
 //
 import { RestClient, RestClientRequest } from '@kapeta/sdk-rest-client';
+import { ConfigProvider } from '@kapeta/sdk-config';
 import { Message } from '../../../.generated/entities/Message';
 import { CreateMessage } from '../../../.generated/entities/CreateMessage';
 
+/**
+ * Creates a new ready MessagesClient.
+ *
+ * See https://github.com/kapetacom/sdk-nodejs-rest-client for more information.
+ */
+export async function createMessagesClient(configProvider: ConfigProvider): Promise<MessagesClient> {
+    return new MessagesClient(false).$withConfigProvider(configProvider);
+}
+
+/**
+ * A client for the messages API.
+ *
+ * Note that this client is not ready to use until it is configured with a ```ConfigProvider```.
+ * This happens automatically when using the ```createMessagesClient``` function or
+ * setting ```autoInit``` to true (the default).
+ *
+ * If you want to configure the client manually, set autoInit to false and call ```$withConfigProvider```.
+ *
+ * Recommended method is using ```createMessagesClient(configProvider:ConfigProvider)```;
+ *
+ * See https://github.com/kapetacom/sdk-nodejs-rest-client for more information.
+ */
 export class MessagesClient extends RestClient {
-    constructor() {
-        super('messages');
+    constructor(autoInit: boolean = true) {
+        super('messages', autoInit);
     }
 
     /**
@@ -30,8 +53,7 @@ export class MessagesClient extends RestClient {
     /**
      * Get all messages
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: GET /messages
      */
@@ -61,8 +83,7 @@ export class MessagesClient extends RestClient {
     /**
      * Add message
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: POST /messages
      */
@@ -85,8 +106,7 @@ export class MessagesClient extends RestClient {
     /**
      * Delete message
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: DELETE /messages/{id}
      */
@@ -109,8 +129,7 @@ export class MessagesClient extends RestClient {
     /**
      * Delete all messages
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: DELETE /messages
      */

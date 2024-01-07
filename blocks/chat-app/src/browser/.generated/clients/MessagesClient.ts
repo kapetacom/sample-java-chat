@@ -2,10 +2,35 @@
 // GENERATED SOURCE - DO NOT EDIT
 //
 
+import { useMemo } from 'react';
 import { RestClient, RestClientRequest } from '@kapeta/sdk-web-rest-client';
 import { Message } from '../../../.generated/entities/Message';
 import { CreateMessage } from '../../../.generated/entities/CreateMessage';
 
+export type ConfigureMessagesClient = (client: MessagesClient) => MessagesClient;
+
+/**
+ * Creates a new MessagesClient for React components.
+ * The client is configured with the provided configuration function.
+ *
+ * It is wrapped in a useMemo hook to ensure that the client is only created once.
+ */
+export const useMessagesClient = (configure?: ConfigureMessagesClient): MessagesClient => {
+    return useMemo(() => {
+        const client = new MessagesClient();
+        if (configure) {
+            return configure(client);
+        }
+        return client;
+    }, [configure]);
+};
+
+/**
+ * A client for the Messages API.
+ * Use the useMessagesClient hook to create a client in React.
+ *
+ * Use the MessagesClient directly in other contexts.
+ */
 export class MessagesClient extends RestClient {
     constructor() {
         super('api/rest/messages');
