@@ -135,4 +135,4 @@ spec:
             @DELETE("/messages")
             deleteAllMessages(): void
   target:
-    kind: kapeta://kapeta/language-target-react-ts:2.0.2
+    kind: kapeta://kapeta/language-target-react-ts:2.0.4
