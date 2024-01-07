@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useAsyncRetry } from 'react-use';
-import { MessagesClient } from '../../.generated/clients/MessagesClient';
+import { useMessagesClient } from '../../.generated/clients/MessagesClient';
 import { Message } from '../../../.generated/entities/Message';
 import { uniqueNamesGenerator, Config, animals, adjectives } from 'unique-names-generator';
 import { NonEmptyArray } from './types';
@@ -23,7 +23,7 @@ export const useAuthorName = () => {
 };
 
 export const useGetMessages = () => {
-    const apiClient = useMemo(() => new MessagesClient(), []);
+    const apiClient = useMessagesClient();
     const messagesLoader = useAsyncRetry(async () => apiClient.getMessages(), []);
     const refresh = messagesLoader.retry;
     const messages = useMemo(() => messagesLoader.value ?? [], [messagesLoader.value]);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { createRoot } from 'react-dom/client';
+import { enableApiMocking } from "../../../mocks/.generated/enableApiMocking";
 import { ChatPage } from './ChatPage';
-
 import './index.less';
 
 const container = document.createElement('div');
@@ -15,8 +15,12 @@ const theme = createTheme({
     },
 });
 
-createRoot(container).render(
-    <ThemeProvider theme={theme}>
-        <ChatPage />
-    </ThemeProvider>
-);
+enableApiMocking().then(() => {
+    createRoot(container).render(
+        <ThemeProvider theme={theme}>
+            <ChatPage />
+        </ThemeProvider>
+    );
+}).catch(console.error);
+
+

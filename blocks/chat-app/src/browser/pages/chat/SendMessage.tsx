@@ -1,7 +1,7 @@
-import React, { FormEvent, useMemo, useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import { Box, TextField, IconButton, useTheme } from '@mui/material';
 import { Send as SendIcon } from '@mui/icons-material';
-import { MessagesClient } from '../../.generated/clients/MessagesClient';
+import { useMessagesClient} from '../../.generated/clients/MessagesClient';
 import { useAuthorName } from './hooks';
 import { useMedia } from 'react-use';
 
@@ -13,7 +13,7 @@ export const SendMessage = (props: SendMessageProps) => {
     const { onSend } = props;
 
     const authorName = useAuthorName();
-    const apiClient = useMemo(() => new MessagesClient(), []);
+    const apiClient = useMessagesClient();
     const inputRef = useRef<HTMLInputElement>(null);
     const [text, setText] = useState('');
     const isButtonDisabled = text === '';
