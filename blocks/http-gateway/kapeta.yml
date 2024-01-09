@@ -1,4 +1,4 @@
-kind: kapeta://kapeta/block-type-gateway-http:2.0.8
+kind: kapeta://kapeta/block-type-gateway-http:2.0.9
 metadata:
   name: kapeta/sample-java-chat-http-gateway
   title: HTTP Gateway
