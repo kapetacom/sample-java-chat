@@ -134,7 +134,7 @@ spec:
         port:
           type: mongodb
   target:
-    kind: kapeta://kapeta/language-target-java-spring-boot:0.4.1
+    kind: kapeta://kapeta/language-target-java-spring-boot:0.5.1
     options:
       basePackage: com.kapeta.sample
       groupId: com.kapeta
