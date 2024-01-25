@@ -1,7 +1,8 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { RestClient, RestClientRequest } from '@kapeta/sdk-rest-client';
+import { RestClient } from '@kapeta/sdk-rest-client';
+import { RestClientRequest } from '@kapeta/sdk-rest';
 import { ConfigProvider } from '@kapeta/sdk-config';
 import { Message } from '../../../.generated/entities/Message';
 import { CreateMessage } from '../../../.generated/entities/CreateMessage';
@@ -16,7 +17,7 @@ export async function createMessagesClient(configProvider: ConfigProvider): Prom
 }
 
 /**
- * A client for the messages API.
+ * A client for the Messages API.
  *
  * Note that this client is not ready to use until it is configured with a ```ConfigProvider```.
  * This happens automatically when using the ```createMessagesClient``` function or
@@ -39,10 +40,10 @@ export class MessagesClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: GET /messages
+     * HTTP: GET /messages/
      */
-    async getMessages(): Promise<Message[] | null> {
-        const result = await this.$execute('GET', '/messages', []);
+    async getAll(): Promise<Message[] | null> {
+        const result = await this.$execute('GET', '/messages/', []);
 
         if (result === null) {
             return null;
@@ -55,10 +56,10 @@ export class MessagesClient extends RestClient {
      *
      * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
-     * HTTP: GET /messages
+     * HTTP: GET /messages/
      */
-    getMessagesRequest(): RestClientRequest<Message[] | null> {
-        return this.$create('GET', '/messages', []);
+    getAllRequest(): RestClientRequest<Message[] | null> {
+        return this.$create('GET', '/messages/', []);
     }
 
     /**
@@ -67,11 +68,11 @@ export class MessagesClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /messages
+     * HTTP: POST /messages/
      */
-    async addMessage(message: CreateMessage): Promise<Message | null> {
-        const result = await this.$execute('POST', '/messages', [
-            { name: 'message', value: message, transport: 'BODY' },
+    async add(message: CreateMessage): Promise<Message | null> {
+        const result = await this.$execute('POST', '/messages/', [
+            { name: 'message', value: message, transport: 'BODY', typeName: 'CreateMessage' },
         ]);
 
         if (result === null) {
@@ -85,10 +86,12 @@ export class MessagesClient extends RestClient {
      *
      * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
-     * HTTP: POST /messages
+     * HTTP: POST /messages/
      */
-    addMessageRequest(message: CreateMessage): RestClientRequest<Message | null> {
-        return this.$create('POST', '/messages', [{ name: 'message', value: message, transport: 'BODY' }]);
+    addRequest(message: CreateMessage): RestClientRequest<Message | null> {
+        return this.$create('POST', '/messages/', [
+            { name: 'message', value: message, transport: 'BODY', typeName: 'CreateMessage' },
+        ]);
     }
 
     /**
@@ -99,8 +102,10 @@ export class MessagesClient extends RestClient {
      *
      * HTTP: DELETE /messages/{id}
      */
-    async deleteMessage(id: string): Promise<void> {
-        await this.$execute('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+    async delete(id: string): Promise<void> {
+        await this.$execute('DELETE', '/messages/{id}', [
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 
     /**
@@ -110,8 +115,10 @@ export class MessagesClient extends RestClient {
      *
      * HTTP: DELETE /messages/{id}
      */
-    deleteMessageRequest(id: string): RestClientRequest<void> {
-        return this.$create('DELETE', '/messages/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+    deleteRequest(id: string): RestClientRequest<void> {
+        return this.$create('DELETE', '/messages/{id}', [
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 
     /**
@@ -120,10 +127,10 @@ export class MessagesClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: DELETE /messages
+     * HTTP: DELETE /messages/
      */
-    async deleteAllMessages(): Promise<void> {
-        await this.$execute('DELETE', '/messages', []);
+    async deleteAll(): Promise<void> {
+        await this.$execute('DELETE', '/messages/', []);
     }
 
     /**
@@ -131,9 +138,9 @@ export class MessagesClient extends RestClient {
      *
      * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
-     * HTTP: DELETE /messages
+     * HTTP: DELETE /messages/
      */
-    deleteAllMessagesRequest(): RestClientRequest<void> {
-        return this.$create('DELETE', '/messages', []);
+    deleteAllRequest(): RestClientRequest<void> {
+        return this.$create('DELETE', '/messages/', []);
     }
 }

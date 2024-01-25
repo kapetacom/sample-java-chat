@@ -74,15 +74,15 @@ spec:
         name: rest
         type: rest
       mapping:
-        getMessages:
-          targetId: getMessages
+        Messages::getAll:
+          targetId: Messages::getAll
           type: EXACT
-        addMessage:
-          targetId: addMessage
+        Messages::add:
+          targetId: Messages::add
           type: EXACT
-        deleteMessage:
-          targetId: deleteMessage
+        Messages::delete:
+          targetId: Messages::delete
           type: EXACT
-        deleteAllMessages:
-          targetId: deleteAllMessages
+        Messages::deleteAll:
+          targetId: Messages::deleteAll
           type: EXACT

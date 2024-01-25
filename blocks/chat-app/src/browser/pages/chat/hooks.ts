@@ -23,8 +23,8 @@ export const useAuthorName = () => {
 };
 
 export const useGetMessages = () => {
-    const apiClient = useMessagesClient();
-    const messagesLoader = useAsyncRetry(async () => apiClient.getMessages(), []);
+    const messagesClient = useMessagesClient();
+    const messagesLoader = useAsyncRetry(async () => messagesClient.getAll(), []);
     const refresh = messagesLoader.retry;
     const messages = useMemo(() => messagesLoader.value ?? [], [messagesLoader.value]);
 

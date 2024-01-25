@@ -13,7 +13,7 @@ export const SendMessage = (props: SendMessageProps) => {
     const { onSend } = props;
 
     const authorName = useAuthorName();
-    const apiClient = useMessagesClient();
+    const messagesClient = useMessagesClient();
     const inputRef = useRef<HTMLInputElement>(null);
     const [text, setText] = useState('');
     const isButtonDisabled = text === '';
@@ -28,8 +28,8 @@ export const SendMessage = (props: SendMessageProps) => {
         if (!value) {
             return;
         }
-        apiClient
-            .addMessage({ text: value, authorName })
+        messagesClient
+            .add({ text: value, authorName })
             .then(() => setText(''))
             .then(onSend)
             .catch(console.error);
