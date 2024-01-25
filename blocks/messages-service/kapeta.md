@@ -19,7 +19,7 @@ In the sub folder structure you'll find the following:
 
 ## REST API 
 To edit the REST API handlers edit the services found here:
-* [src/main/java/com/kapeta/sample/service/MessagesService.java](src/main/java/com/kapeta/sample/service/MessagesService.java)
+[src/main/java/com/kapeta/sample/service](src/main/java/com/kapeta/sample/service/)
 
 The REST layer itself is generated for you - so your service
 will be called as specified within the REST API definition in Kapeta.

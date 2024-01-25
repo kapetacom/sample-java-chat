@@ -8,64 +8,58 @@ spec:
     types:
       - type: dto
         name: Message
-        description: null
         properties:
           id:
             type: string
-            description: null
             secret: false
             required: true
             global: false
           text:
             type: string
-            description: null
             secret: false
             required: true
             global: false
           createdAt:
             type: date
-            description: null
             secret: false
             required: true
             global: false
           authorName:
             type: string
-            description: null
             secret: false
             required: true
             global: false
       - type: dto
         name: CreateMessage
-        description: null
         properties:
           text:
             type: string
-            description: null
             secret: false
             required: true
             global: false
           authorName:
             type: string
-            description: null
             secret: false
             required: true
             global: false
     source:
-      type: kapeta-dsl
+      type: kaplang
+      version: 1.9.3
       value: |-
-        Message {
+        type Message {
         	id: string
         	text: string
         	createdAt: date
         	authorName: string
         }
 
-        CreateMessage {
+
+        type CreateMessage {
         	text: string
         	authorName: string
         }
   providers:
-    - kind: kapeta/resource-type-web-page:0.0.12
+    - kind: kapeta://kapeta/resource-type-web-page:0.0.13
       metadata:
         name: chat
       spec:
@@ -74,7 +68,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta://kapeta/resource-type-rest-client:1.0.18
+    - kind: kapeta/resource-type-rest-client:1.1.0
       metadata:
         name: messages
       spec:
@@ -82,24 +76,15 @@ spec:
           name: rest
           type: rest
         methods:
-          getMessages:
+          Messages::deleteAll:
             responseType:
-              ref: Message[]
-            method: GET
-            path: /messages
-            description: Get all messages
+              type: void
+            method: DELETE
+            path: /messages/
+            description: Delete all messages
             arguments: {}
-          addMessage:
-            responseType:
-              ref: Message
-            method: POST
-            path: /messages
-            description: Add message
-            arguments:
-              message:
-                ref: CreateMessage
-                transport: BODY
-          deleteMessage:
+            controllerName: Messages
+          Messages::delete:
             responseType:
               type: void
             method: DELETE
@@ -109,30 +94,52 @@ spec:
               id:
                 type: string
                 transport: PATH
-          deleteAllMessages:
+                argument: id
+                optional: false
+            controllerName: Messages
+          Messages::add:
             responseType:
-              type: void
-            method: DELETE
-            path: /messages
-            description: Delete all messages
+              ref: Message
+            method: POST
+            path: /messages/
+            description: Add message
+            arguments:
+              message:
+                ref: CreateMessage
+                transport: BODY
+                argument: message
+                optional: false
+            controllerName: Messages
+          Messages::getAll:
+            responseType:
+              ref: Message[]
+            method: GET
+            path: /messages/
+            description: Get all messages
             arguments: {}
+            controllerName: Messages
         source:
-          type: kapeta-dsl
-          value: |-
-            //Get all messages
-            @GET("/messages")
-            getMessages(): Message[]
+          type: kaplang
+          version: 1.9.3
+          value: |+
+            controller Messages('/messages') {
+                //Get all messages
+                @GET("/")
+                getAll(): Message[]
 
-            //Add message
-            @POST("/messages")
-            addMessage(@Body message:CreateMessage): Message
+                //Add message
+                @POST("/")
+                add(@Body message:CreateMessage): Message
 
-            //Delete message
-            @DELETE("/messages/{id}")
-            deleteMessage(@Path id:string): void
+                //Delete message
+                @DELETE("/{id}")
+                delete(@Path id:string): void
 
-            //Delete all messages
-            @DELETE("/messages")
-            deleteAllMessages(): void
+
+                //Delete all messages
+                @DELETE("/")
+                deleteAll(): void
+            }
+
   target:
-    kind: kapeta://kapeta/language-target-react-ts:2.0.7
+    kind: kapeta://kapeta/language-target-react-ts:3.0.1

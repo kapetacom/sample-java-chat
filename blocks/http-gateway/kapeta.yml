@@ -7,7 +7,7 @@ spec:
   entities: {}
   providers: []
   consumers:
-    - kind: kapeta/resource-type-web-fragment:0.0.12
+    - kind: kapeta://kapeta/resource-type-web-fragment:0.0.13
       metadata:
         name: chat
       spec:

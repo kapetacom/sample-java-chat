@@ -17,10 +17,10 @@ export const Messages = (props: ChatMessageGroupProps) => {
     const authorName = messages[0].authorName;
     const isMe = messages[0].authorName === useAuthorName();
     const messageColor = isMe ? '#E4E4E4' : '#E1F5FE';
-    const apiClient = useMessagesClient();
+    const messagesClient = useMessagesClient();
 
     const handleDelete = (id: string) => {
-        apiClient.deleteMessage(id).then(onDelete).catch(console.error);
+        messagesClient.delete(id).then(onDelete).catch(console.error);
     };
 
     const theme = useTheme();
