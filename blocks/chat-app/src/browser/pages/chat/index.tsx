@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { createRoot } from 'react-dom/client';
-import { enableApiMocking } from "../../../mocks/.generated/enableApiMocking";
+import { enableApiMocking } from "../../../mocks/enableApiMocking";
 import { ChatPage } from './ChatPage';
 import './index.less';
 
