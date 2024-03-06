@@ -1,8 +1,8 @@
 kind: kapeta://kapeta/block-type-service:1.3.6
 metadata:
-  name: morten_holm/sample-java-chat-messages-service
+  name: kapeta/sample-java-chat-messages-service
   title: Messages Service
-  visibility: private
+  visibility: public
 spec:
   entities:
     types:
