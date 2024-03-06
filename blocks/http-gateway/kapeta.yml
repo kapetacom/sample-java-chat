@@ -1,8 +1,8 @@
-kind: kapeta://kapeta/block-type-gateway-http:2.0.9
+kind: kapeta://kapeta/block-type-gateway-http:2.1.0
 metadata:
-  name: kapeta/sample-java-chat-http-gateway
+  name: morten_holm/sample-java-chat-http-gateway
   title: HTTP Gateway
-  visibility: public
+  visibility: private
 spec:
   entities: {}
   providers: []

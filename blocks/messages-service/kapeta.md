@@ -54,4 +54,3 @@ See Mongock documentation for more information:
 
 When you have added migrations you simply (re)start the application to apply them. 
 
-

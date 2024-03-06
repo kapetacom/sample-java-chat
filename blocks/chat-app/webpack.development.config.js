@@ -8,8 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PAGES = require('./webpack.pages.js');
 
-const HotMiddlewareScript =
-    'webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&dynamicPublicPath=true&reload=true';
+const HotMiddlewareScript = 'webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&reload=true';
 
 const devMode = process.env.NODE_ENV === 'development';
 
@@ -64,19 +63,24 @@ const config = {
                 },
             },
             {
+                test: /\.css$/,
+                use: [styleLoader, 'css-loader'],
+            },
+            {
                 test: /\.less$/,
                 use: [styleLoader, 'css-loader', 'less-loader'],
-                include: Path.resolve(__dirname, './'),
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: [styleLoader, 'css-loader', 'sass-loader'],
-                include: Path.resolve(__dirname, './'),
             },
             {
                 test: /\.ya?ml$/,
                 use: ['json-loader', 'yaml-loader'],
-                include: Path.resolve(__dirname, './'),
+            },
+            {
+                test: /\.(jpg|png|gif|woff|woff2|eot|ttf|svg)$/,
+                type: 'asset',
             },
         ],
     },
@@ -85,7 +89,7 @@ const config = {
         alias: {
             react: Path.resolve(__dirname, './node_modules/react'),
             'react-dom': Path.resolve(__dirname, './node_modules/react-dom'),
-            './browser.js': Path.resolve(__dirname, './src/mocks/.generated/browser.ts'),
+//            './browser.js': Path.resolve(__dirname, './src/mocks/.generated/browser.ts'),
         },
     },
     plugins: [],
@@ -95,12 +99,7 @@ if (devMode) {
     config.plugins.unshift(new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin());
     config.plugins.push(
         new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: Path.resolve(__dirname, 'src/mocks/mockServiceWorker.js'),
-                    to: 'mockServiceWorker.js',
-                },
-            ],
+            patterns: [{ from: Path.resolve(__dirname, 'src/mocks/mockServiceWorker.js'), to: 'mockServiceWorker.js' }],
         })
     );
 } else {
